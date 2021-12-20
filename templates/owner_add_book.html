@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="static/js/jquery-1.12.4.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar" class="collapse navbar-collapse navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li  class="active"><a href='/owner_add_book'>Add Book</a></li>
+            <li><a href='/owner_book'>Book</a></li>
+            <li><a href='/owner_report'>Report</a></li>
+            <li><a href='/owner_email'>Email</a></li>
+            <li><a href='/logout'>logout</a></li>
+        </ul>
+    </div>
+
+<div class="container">
+    <div class="starter-template">
+    <h1>Add Books</h1>
+    <form method="post" action="{{ url_for('owner_add_book') }}">
+        <div class="form-group" id="#signup-form">
+            <input type="text" class="form-control" placeholder="book_isbn" name="book_isbn" required="required"><br><br>
+            <input type="text" class="form-control" placeholder="book_name" name="book_name" required="required"><br><br>
+            <input type="text" class="form-control" placeholder="book_pages" name="book_pages" required="required"><br><br>
+            <input type="text" class="form-control" placeholder="book_price" name="book_price" required="required"><br><br>
+            <input type="text" class="form-control" placeholder="book_percentage" name="book_percentage" required="required"><br><br>
+            <input type="text" class="form-control" placeholder="book_quantity" name="book_quantity" required="required"><br><br>
+            <input type="text" class="form-control" placeholder="book_threshold" name="book_threshold" required="required"><br><br>
+            <select name="author_id" class="form-control" required>
+                <option value="" disabled selected>Select Author</option>
+                <option value="1">John Milton</option>
+                <option value="2">Charles Olson</option>
+            </select><br><br>
+            <select name="genre_id" class="form-control" required>
+                <option value="" disabled selected>Select Genre</option>
+                <option value="1">Science</option>
+                <option value="2">Biology</option>
+            </select><br><br>
+            <select name="publisher_id" class="form-control" required>
+                <option value="" disabled selected>Select Publisher</option>
+                <option value="1">Oxford</option>
+                <option value="2">Cambridge</option>
+            </select><br><br>
+        </div>
+        <br>
+        <button type="submit" value="Add" class="btn btn-default submit">Add</button>
+    </form>
+    {% if error_msg %}
+        <h4>{{ error_msg }}</h4>
+    {% endif %}
+ </div>
+</div>
+
+</body>

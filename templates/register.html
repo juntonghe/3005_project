@@ -1,0 +1,62 @@
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="static/js/jquery-1.12.4.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Nav Bar-->
+    <div id="navbar" class="collapse navbar-collapse navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li><a href="/login">Login</a></li>
+        <li class="active"><a href="/register">Register</a></li>
+    </ul>
+    </div>
+
+    <div class="container">
+        <div class="starter-template">
+            <!-- Main content should go here-->
+            <h1>Register</h1>
+
+            <form action="{{ url_for('register_user') }}" method="POST">
+                user_nickname:
+                <br>
+                <input type="text" class="form-control" name="user_nickname">
+                <br>
+                user_password:
+                <br>
+                <input type="password" class="form-control" name="user_password">
+                <br>
+                user_type:
+                <br>
+                <select name="user_type" class="form-control" required>
+                    <option value="" disabled selected>Select User Type</option>
+                    <option value="customer">customer</option>
+                    <option value="owner">owner</option>
+                </select>
+                <br>
+                <input type="text" class="form-control" placeholder="user_firstname" name="user_firstname">
+                <br>
+                <input type="text" class="form-control" placeholder="user_lastname" name="user_lastname">
+                <br>
+                <input type="text" class="form-control" placeholder="date of birth (format:1994/12/12)" name="user_dob">
+                <br>
+                <input type="text" class="form-control" placeholder="user_billing" name="user_billing">
+                <br>
+                <input type="text" class="form-control" placeholder="user_shipping" name="user_shipping">
+                <br>
+                <input type="submit" class="btn btn-success" value="Register">
+                <br>
+                <br>
+                <br>
+                <br>
+            </form>
+                {% if error_msg %}
+                {{error_msg}}
+                {% endif %}
+        </div>
+    </div>
+
+</body>

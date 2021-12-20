@@ -1,0 +1,62 @@
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="static/js/jquery-1.12.4.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar" class="collapse navbar-collapse navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li><a href='/owner_add_book'>Add Book</a></li>
+            <li  class="active"><a href='/owner_book'>Book</a></li>
+            <li><a href='/owner_report'>Report</a></li>
+            <li><a href='/owner_email'>Email</a></li>
+            <li><a href='/logout'>logout</a></li>
+        </ul>
+    </div>
+
+<div class="container">
+    <div class="starter-template">
+    <h1>Current Books</h1>
+    {% if books %}
+        <table class="table table-striped">
+        <thead style="width:100%;">
+            <tr>
+            <th style="width:10%;text-align: left">book_isbn</th>
+            <th style="width:10%;text-align: left">book_name</th>
+            <th style="width:10%;text-align: left">book_pages</th>
+            <th style="width:10%;text-align: left">book_price</th>
+            <th style="width:8%;text-align: left">book_percentage</th>
+            <th style="width:8%;text-align: left">book_quantity</th>
+            <th style="width:8%;text-align: left">book_threshold</th>
+            <th style="width:10%;text-align: left">author</th>
+            <th style="width:10%;text-align: left">genre</th>
+            <th style="width:10%;text-align: left">publisher</th>
+            <th style="width:6%;text-align: left">Operation</th>
+            </tr>
+         </thead>
+        <tbody style="width:100%;">
+        {% for book in books %}
+        <tr>
+            <td style="width:10%;text-align: left">{{ book[0] }}</td>
+            <td style="width:10%;text-align: left">{{ book[1] }}</td>
+            <td style="width:10%;text-align: left">{{ book[2] }}</td>
+            <td style="width:10%;text-align: left">{{ book[3] }}</td>
+            <td style="width:8%;text-align: left">{{ book[4] }}</td>
+            <td style="width:8%;text-align: left">{{ book[5] }}</td>
+            <td style="width:8%;text-align: left">{{ book[6] }}</td>
+            <td style="width:10%;text-align: left">{{ book[7] }}</td>
+            <td style="width:10%;text-align: left">{{ book[8] }}</td>
+            <td style="width:10%;text-align: left">{{ book[9] }}</td>
+            <td style="width:6%;text-align: left"><a href="/owner_remove_book?book_isbn={{book[0]}}">Remove</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+    </div>
+</div>
+
+</body>

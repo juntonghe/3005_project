@@ -1,0 +1,51 @@
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="static/js/jquery-1.12.4.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar" class="collapse navbar-collapse navbar-inverse">
+        <ul class="nav navbar-nav">
+        <li><a href='/customer_book'>Search Book</a></li>
+        <li  class="active"><a href='/customer_basket'>My Basket</a></li>
+        <li><a href='/customer_order'>Order</a></li>
+        <li><a href='/logout'>Logout</a></li>
+        </ul>
+    </div>
+
+<div class="title">
+    <h1></h1>
+</div>
+<div class="container">
+    <div class="starter-template">
+        <h1>Books In My Basket</h1>
+    {% if baskets %}
+        <table class="table table-striped">
+        <thead style="width:100%;">
+            <tr>
+            <th style="width:50%;text-align: left">book_isbn</th>
+            <th style="width:50%;text-align: left">book_num</th>
+            </tr>
+         </thead>
+        <tbody style="width:100%;">
+        {% for basket in baskets %}
+        <tr>
+            <th style="width:50%;text-align: left">{{basket[0]}}</th>
+            <th style="width:50%;text-align: left">{{basket[1]}}</th>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+ </div>
+
+<div id="content">
+    <form method="get" action="{{ url_for('customer_add_order') }}">
+        <button type="submit" value="Order These!" class="btn btn-success submit">Submit Order!</button>
+    </form>
+</div>
+
+</body>
